@@ -1,0 +1,116 @@
+---
+name: "Release"
+
+on:  # yamllint disable-line rule:truthy
+  release:
+    types: ["published"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing release tag to build and publish, for example v0.1.0."
+        required: true
+        type: "string"
+
+permissions:
+  contents: "read"
+
+jobs:
+  build:
+    name: "Build package"
+    runs-on: "ubuntu-latest"
+    outputs:
+      release_tag: "${{ steps.release-tag.outputs.release_tag }}"
+    steps:
+      - name: "Check out repository code"
+        uses: "actions/checkout@v4"
+        with:
+          fetch-depth: 0
+
+      - name: "Resolve release tag"
+        id: "release-tag"
+        env:
+          RELEASE_EVENT_TAG: "${{ github.event.release.tag_name }}"
+          WORKFLOW_INPUT_TAG: "${{ github.event.inputs.tag }}"
+        run: |
+          RELEASE_TAG="${RELEASE_EVENT_TAG:-$WORKFLOW_INPUT_TAG}"
+          if [ -z "${RELEASE_TAG}" ]; then
+            echo "Release tag is required."
+            exit 1
+          fi
+          case "${RELEASE_TAG}" in
+            v*) ;;
+            *)
+              echo "Release tag must start with v."
+              exit 1
+              ;;
+          esac
+          echo "release_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
+          git checkout "${RELEASE_TAG}"
+
+      - name: "Setup environment"
+        uses: "networktocode/gh-action-setup-poetry-environment@v7"
+        with:
+          poetry-version: "2.1.3"
+          python-version: "3.12"
+          poetry-install-options: "--no-root"
+
+      - name: "Build documentation"
+        run: "poetry run invoke build-and-check-docs"
+
+      - name: "Build package distributions"
+        run: "poetry build"
+
+      - name: "Check tag and package version"
+        env:
+          RELEASE_TAG: "${{ steps.release-tag.outputs.release_tag }}"
+        run: |
+          PACKAGE_VERSION="v$(poetry version -s)"
+          if [ "${RELEASE_TAG}" != "${PACKAGE_VERSION}" ]; then
+            echo "Release tag ${RELEASE_TAG} does not match package version ${PACKAGE_VERSION}."
+            exit 1
+          fi
+
+      - name: "Upload package artifacts"
+        uses: "actions/upload-artifact@v4"
+        with:
+          name: "distfiles"
+          path: "dist/"
+          if-no-files-found: "error"
+
+  publish-github:
+    name: "Publish GitHub Release assets"
+    runs-on: "ubuntu-latest"
+    needs: "build"
+    permissions:
+      contents: "write"
+    steps:
+      - name: "Download package artifacts"
+        uses: "actions/download-artifact@v4"
+        with:
+          name: "distfiles"
+          path: "dist/"
+
+      - name: "Upload package assets"
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          RELEASE_TAG: "${{ needs.build.outputs.release_tag }}"
+        run: "gh release upload ${RELEASE_TAG} dist/*.{tar.gz,whl} --clobber --repo ${{ github.repository }}"
+
+  publish-pypi:
+    name: "Publish PyPI package"
+    runs-on: "ubuntu-latest"
+    if: "${{ vars.PUBLISH_TO_PYPI == 'true' }}"
+    needs: "build"
+    environment: "pypi"
+    permissions:
+      # Security Standard: PyPI Trusted Publishing uses OIDC instead of a long-lived API token.
+      id-token: "write"
+    steps:
+      - name: "Download package artifacts"
+        uses: "actions/download-artifact@v4"
+        with:
+          name: "distfiles"
+          path: "dist/"
+
+      - name: "Publish package distributions to PyPI"
+        uses: "pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e"  # v1.13.0

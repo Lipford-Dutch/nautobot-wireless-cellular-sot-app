@@ -1,0 +1,21 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 1
+    groups:
+      python-runtime:
+        patterns:
+          - "*"
+    labels:
+      - "type: dependencies"
+      - "security"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
