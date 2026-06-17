@@ -6,9 +6,11 @@ This repository is the standalone `nautobot-cellular-sot` project for the Nautob
 
 ## Branch Model
 
-- `main`: stable release branch
+- `main`: production branch and default GitHub target
 - `development`: integration branch
 - `initial-dev`: first implementation branch
+
+Current public status: Alpha. Treat `main` as the deployable branch, and use pull requests for all documentation, workflow, and app changes.
 
 ## Implemented
 
@@ -22,6 +24,7 @@ This repository is the standalone `nautobot-cellular-sot` project for the Nautob
 - Pydantic payload normalization
 - DiffSync adapter scaffolding
 - Tests, docs, issue templates, CI workflows, and release automation
+- Alpha marketing page and static docs copy with UI sneak-peek assets
 
 ## Validation
 
