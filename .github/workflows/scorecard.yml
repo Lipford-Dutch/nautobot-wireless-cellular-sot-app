@@ -14,13 +14,18 @@ permissions:
   contents: "read"
   issues: "read"
   pull-requests: "read"
-  security-events: "write"
   id-token: "write"
 
 jobs:
   scorecard:
     name: "Scorecard"
     runs-on: "ubuntu-latest"
+    permissions:
+      actions: "read"
+      contents: "read"
+      issues: "read"
+      pull-requests: "read"
+      id-token: "write"
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v4"
@@ -33,6 +38,27 @@ jobs:
           results_file: "scorecard-results.sarif"
           results_format: "sarif"
           publish_results: true
+
+      - name: "Upload Scorecard artifact"
+        uses: "actions/upload-artifact@v4"
+        with:
+          name: "scorecard-results"
+          path: "scorecard-results.sarif"
+          if-no-files-found: "error"
+
+  upload-sarif:
+    name: "Upload SARIF"
+    runs-on: "ubuntu-latest"
+    needs:
+      - "scorecard"
+    permissions:
+      actions: "read"
+      security-events: "write"
+    steps:
+      - name: "Download Scorecard artifact"
+        uses: "actions/download-artifact@v4"
+        with:
+          name: "scorecard-results"
 
       - name: "Upload SARIF"
         uses: "github/codeql-action/upload-sarif@v3"
