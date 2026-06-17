@@ -1,32 +1,32 @@
 """GraphQL types for Nautobot Cellular SoT."""
 
-from nautobot.apps.graphql import NautobotObjectType
+from nautobot.core.graphql.types import OptimizedNautobotObjectType
 
 from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 
 
-class CarrierProfileType(NautobotObjectType):
+class CarrierProfileType(OptimizedNautobotObjectType):
     """GraphQL type for carrier profiles."""
 
     class Meta:
         model = CarrierProfile
 
 
-class CellularRouterType(NautobotObjectType):
+class CellularRouterType(OptimizedNautobotObjectType):
     """GraphQL type for cellular routers."""
 
     class Meta:
         model = CellularRouter
 
 
-class SIMCardType(NautobotObjectType):
+class SIMCardType(OptimizedNautobotObjectType):
     """GraphQL type for SIM cards."""
 
     class Meta:
         model = SIMCard
 
 
-class CellularOperationalSnapshotType(NautobotObjectType):
+class CellularOperationalSnapshotType(OptimizedNautobotObjectType):
     """GraphQL type for latest operational snapshots."""
 
     class Meta:

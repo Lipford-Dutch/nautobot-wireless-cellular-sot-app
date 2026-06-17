@@ -25,7 +25,6 @@ Nautobot is intentionally not a high-frequency polling database. The app stores 
 ```python
 PLUGINS = [
     "nautobot_cellular_sot",
-    "nautobot_cellular_sot",
 ]
 ```
 

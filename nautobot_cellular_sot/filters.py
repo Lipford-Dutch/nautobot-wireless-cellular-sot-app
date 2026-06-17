@@ -14,7 +14,7 @@ class CarrierProfileFilterSet(NautobotFilterSet):
 
     class Meta:
         model = CarrierProfile
-        fields = ["name", "carrier_name", "enabled", "roaming_allowed"]
+        fields = "__all__"
 
     def search(self, queryset, name, value):
         """Search carrier profile names and APNs."""
@@ -27,7 +27,7 @@ class CellularRouterFilterSet(NautobotFilterSet):
 
     class Meta:
         model = CellularRouter
-        fields = ["device", "imei", "provisioning_state", "vendor_platform", "external_system_id"]
+        fields = "__all__"
 
 
 class SIMCardFilterSet(NautobotFilterSet):
@@ -35,4 +35,4 @@ class SIMCardFilterSet(NautobotFilterSet):
 
     class Meta:
         model = SIMCard
-        fields = ["iccid", "carrier_profile", "router", "slot", "provisioning_state"]
+        fields = "__all__"
