@@ -1,8 +1,9 @@
 # Nautobot Cellular SoT App
 
 [![Nautobot](https://img.shields.io/badge/Nautobot-3.1%2B-blue)](https://www.networktocode.com/nautobot/)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10--3.14-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green)](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/LICENSE)
+[![Status](https://img.shields.io/badge/Status-Production-brightgreen)](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/releases)
 
 Nautobot Cellular SoT App is the production authoritative management layer for cellular routers, SIM cards, carrier profiles, and normalized latest-state observations. Nautobot owns desired state while external collectors own high-frequency polling and telemetry history.
 
@@ -11,7 +12,8 @@ Nautobot Cellular SoT App is the production authoritative management layer for c
 - Package: `nautobot-cellular-sot`
 - Python module: `nautobot_cellular_sot`
 - GitHub repository: `Lipford-Dutch/nautobot-wireless-cellular-sot-app`
-- Primary branches: `main`, `development`, `initial-dev`
+- Production branch: `main`
+- Development branches: `development`, `initial-dev`
 - License: Apache-2.0
 - Development status: Production (`v1.0.0`)
 
@@ -26,6 +28,7 @@ Nautobot Cellular SoT App is the production authoritative management layer for c
 - Pydantic normalization and DiffSync adapter scaffolding.
 - Transaction-safe SIM assignment and stale snapshot rejection.
 - Nautobot cookiecutter CI, security workflows, release automation, docs, issue templates, and Towncrier.
+- Standalone product page with UI previews from the documentation assets.
 - Database-backed runtime configuration, custom validation, home-page content,
   contextual banners, Jinja filters, Jobs, core Device extensions, and native
   app metrics.
@@ -73,7 +76,10 @@ nautobot-server post_upgrade
 .\.venv\Scripts\poetry.exe run mkdocs build --strict
 ```
 
-The standalone marketing page is available at [`cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/cellular.html).
+The standalone product page is available at [`cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/cellular.html).
+
+The documentation copy is available at [`docs/cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/docs/cellular.html) for static publishing workflows.
 
 Production v1 planning is complete. The v2 specification and planning review is
 due **October 1, 2026**, with v2 delivery targeted for **end of 2026**.
+

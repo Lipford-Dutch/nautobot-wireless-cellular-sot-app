@@ -4,6 +4,13 @@ Nautobot Cellular SoT App manages cellular routers, SIM cards, carrier profiles,
 
 Nautobot owns desired state. External collectors own high-frequency polling and historical telemetry.
 
+## Production Operations
+
+- Roadmap discussion: [GitHub Discussion #2](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/discussions/2)
+- Field reports and operator feedback: [GitHub Discussion #3](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/discussions/3)
+- Standalone product page: [`cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/cellular.html)
+- UI preview screenshots: [`docs/media/ss_main_page_dark.png`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/docs/media/ss_main_page_dark.png) and [`docs/media/ss_main_page_light.png`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/docs/media/ss_main_page_light.png)
+
 ## Operator Surfaces
 
 - Dashboard: `/plugins/cellular-sot/`
