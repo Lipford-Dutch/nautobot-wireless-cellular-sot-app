@@ -33,5 +33,5 @@ sudo systemctl restart nautobot nautobot-worker nautobot-scheduler
 
 1. Run `nautobot-server check`.
 2. Confirm `nautobot-server migrate --check` reports no pending migrations.
-3. Open **Wireless Infrastructure > Cellular > Dashboard**.
+3. Open **Cellular > Operations > Dashboard**.
 4. Verify the summary and Prometheus API endpoints with an authenticated token.

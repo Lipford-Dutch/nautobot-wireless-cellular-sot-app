@@ -4,7 +4,7 @@ import django_filters
 from django.db.models import Q
 from nautobot.apps.filters import NautobotFilterSet
 
-from nautobot_cellular_sot.models import CarrierProfile, CellularRouter, SIMCard
+from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 
 
 class CarrierProfileFilterSet(NautobotFilterSet):
@@ -36,3 +36,11 @@ class SIMCardFilterSet(NautobotFilterSet):
     class Meta:
         model = SIMCard
         fields = ["iccid", "carrier_profile", "router", "slot", "provisioning_state"]
+
+
+class CellularOperationalSnapshotFilterSet(NautobotFilterSet):
+    """Filter the latest cellular operational snapshots."""
+
+    class Meta:
+        model = CellularOperationalSnapshot
+        fields = ["router", "collector", "registration_state", "observed_at", "observed_iccid"]

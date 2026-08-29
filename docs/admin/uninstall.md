@@ -1,6 +1,6 @@
 # Uninstall the App from Nautobot
 
-Use this guide to remove Nautobot Wireless Cellular SoT App from a Nautobot environment.
+Use this guide to remove Nautobot Cellular SoT App from a Nautobot environment.
 
 ## Database Cleanup
 

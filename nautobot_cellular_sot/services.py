@@ -12,6 +12,7 @@ from django.utils import timezone
 
 from nautobot_cellular_sot.models import CellularOperationalSnapshot, CellularRouter, SIMCard
 from nautobot_cellular_sot.schemas import NormalizedCellularRouter
+from nautobot_cellular_sot.utils import is_registered_state
 
 
 @transaction.atomic
@@ -88,7 +89,7 @@ def get_cellular_summary() -> dict[str, Any]:
         snapshot = getattr(router, "operational_snapshot", None)
         conflict = has_sim_assignment_conflict(router)
         conflict_count += int(conflict)
-        registered_count += int(bool(snapshot and snapshot.registration_state in {"registered", "roaming"}))
+        registered_count += int(bool(snapshot and is_registered_state(snapshot.registration_state)))
         router_rows.append(
             {
                 "id": router.pk,

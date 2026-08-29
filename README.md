@@ -1,10 +1,10 @@
-# Nautobot Wireless Cellular SoT App
+# Nautobot Cellular SoT App
 
 [![Nautobot](https://img.shields.io/badge/Nautobot-3.1%2B-blue)](https://www.networktocode.com/nautobot/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green)](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/LICENSE)
 
-Nautobot Wireless Cellular SoT App is the authoritative management layer for cellular routers, SIM cards, carrier profiles, and normalized latest-state observations. Nautobot owns desired state while external collectors own high-frequency polling and telemetry history.
+Nautobot Cellular SoT App is the production authoritative management layer for cellular routers, SIM cards, carrier profiles, and normalized latest-state observations. Nautobot owns desired state while external collectors own high-frequency polling and telemetry history.
 
 ## Repository Metadata
 
@@ -13,6 +13,7 @@ Nautobot Wireless Cellular SoT App is the authoritative management layer for cel
 - GitHub repository: `Lipford-Dutch/nautobot-wireless-cellular-sot-app`
 - Primary branches: `main`, `development`, `initial-dev`
 - License: Apache-2.0
+- Development status: Production (`v1.0.0`)
 
 ## Features
 
@@ -20,11 +21,14 @@ Nautobot Wireless Cellular SoT App is the authoritative management layer for cel
 - SIM assignment, slot uniqueness, lifecycle state, ICCID masking, and protected relationships.
 - Carrier and APN desired-state profiles.
 - Latest-only operational snapshots for registration and signal state.
-- Wireless Infrastructure dashboard, CRUD pages, filters, tables, and Device detail panel.
+- Cellular dashboard, CRUD pages, filters, tables, and Device detail panel.
 - REST API, GraphQL types, summary endpoint, and bounded-cardinality Prometheus export.
 - Pydantic normalization and DiffSync adapter scaffolding.
 - Transaction-safe SIM assignment and stale snapshot rejection.
 - Nautobot cookiecutter CI, security workflows, release automation, docs, issue templates, and Towncrier.
+- Database-backed runtime configuration, custom validation, home-page content,
+  contextual banners, Jinja filters, Jobs, core Device extensions, and native
+  app metrics.
 
 ## Installation
 
@@ -70,3 +74,6 @@ nautobot-server post_upgrade
 ```
 
 The standalone marketing page is available at [`cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/cellular.html).
+
+Production v1 planning is complete. The v2 specification and planning review is
+due **October 1, 2026**, with v2 delivery targeted for **end of 2026**.

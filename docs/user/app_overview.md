@@ -1,6 +1,6 @@
 # App Overview
 
-Nautobot Wireless Cellular SoT App manages cellular routers, SIM cards, carrier profiles, and normalized latest operational state.
+Nautobot Cellular SoT App manages cellular routers, SIM cards, carrier profiles, and normalized latest operational state.
 
 Nautobot owns desired state. External collectors own high-frequency polling and historical telemetry.
 

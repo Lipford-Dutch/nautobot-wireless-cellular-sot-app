@@ -25,4 +25,6 @@ class ReconcileCellularInventory(Job):
         return f"Cellular reconciliation requested in {mode} mode; no vendor collector configured."
 
 
-register_jobs(ReconcileCellularInventory)
+jobs = [ReconcileCellularInventory]
+
+register_jobs(*jobs)
