@@ -22,6 +22,8 @@ Nautobot 3.
 - Renamed the primary navigation from **Wireless Infrastructure** to
   **Cellular**.
 - Updated GraphQL types and Nautobot integration paths for Nautobot 3.2.
+- Refreshed the production dependency lock to Nautobot 3.2.3 and current
+  security-fixed runtime packages.
 - Promoted the package version and documentation from `v0.1.0` to stable
   `v1.0.0`.
 
