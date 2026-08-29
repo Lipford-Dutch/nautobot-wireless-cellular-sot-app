@@ -16,6 +16,7 @@ from nautobot_cellular_sot.api.serializers import (
 from nautobot_cellular_sot.filters import CarrierProfileFilterSet, CellularRouterFilterSet, SIMCardFilterSet
 from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 from nautobot_cellular_sot.services import get_cellular_summary
+from nautobot_cellular_sot.utils import is_registered_state
 
 
 class CellularSummaryView(APIView):
@@ -55,7 +56,7 @@ class CellularPrometheusView(APIView):
         ]
         for router in summary["routers"]:
             device = str(router["device"]).replace("\\", "\\\\").replace('"', '\\"')
-            registration_up = 1 if router["registration_state"] in {"registered", "roaming"} else 0
+            registration_up = 1 if is_registered_state(router["registration_state"]) else 0
             conflict = 1 if router["assignment_conflict"] else 0
             lines.append(f'cellular_router_info{{device="{device}"}} 1')
             lines.append(f'cellular_router_registration_up{{device="{device}"}} {registration_up}')

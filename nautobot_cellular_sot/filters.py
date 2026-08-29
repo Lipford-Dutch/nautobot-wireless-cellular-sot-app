@@ -4,7 +4,7 @@ import django_filters
 from django.db.models import Q
 from nautobot.apps.filters import NautobotFilterSet
 
-from nautobot_cellular_sot.models import CarrierProfile, CellularRouter, SIMCard
+from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 
 
 class CarrierProfileFilterSet(NautobotFilterSet):
@@ -14,7 +14,7 @@ class CarrierProfileFilterSet(NautobotFilterSet):
 
     class Meta:
         model = CarrierProfile
-        fields = "__all__"
+        fields = ["name", "carrier_name", "enabled", "roaming_allowed"]
 
     def search(self, queryset, name, value):
         """Search carrier profile names and APNs."""
@@ -27,7 +27,7 @@ class CellularRouterFilterSet(NautobotFilterSet):
 
     class Meta:
         model = CellularRouter
-        fields = "__all__"
+        fields = ["device", "imei", "provisioning_state", "vendor_platform", "external_system_id"]
 
 
 class SIMCardFilterSet(NautobotFilterSet):
@@ -35,4 +35,12 @@ class SIMCardFilterSet(NautobotFilterSet):
 
     class Meta:
         model = SIMCard
-        fields = "__all__"
+        fields = ["iccid", "carrier_profile", "router", "slot", "provisioning_state"]
+
+
+class CellularOperationalSnapshotFilterSet(NautobotFilterSet):
+    """Filter the latest cellular operational snapshots."""
+
+    class Meta:
+        model = CellularOperationalSnapshot
+        fields = ["router", "collector", "registration_state", "observed_at", "observed_iccid"]

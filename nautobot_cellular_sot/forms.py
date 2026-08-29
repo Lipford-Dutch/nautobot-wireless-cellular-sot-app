@@ -2,7 +2,7 @@
 
 from nautobot.apps.forms import NautobotBulkEditForm, NautobotFilterForm, NautobotModelForm
 
-from nautobot_cellular_sot.models import CarrierProfile, CellularRouter, SIMCard
+from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 
 
 class CarrierProfileForm(NautobotModelForm):
@@ -26,6 +26,14 @@ class SIMCardForm(NautobotModelForm):
 
     class Meta:
         model = SIMCard
+        fields = "__all__"
+
+
+class CellularOperationalSnapshotForm(NautobotModelForm):
+    """Edit the latest normalized operational state for a router."""
+
+    class Meta:
+        model = CellularOperationalSnapshot
         fields = "__all__"
 
 

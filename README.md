@@ -1,11 +1,11 @@
-# Nautobot Wireless Cellular SoT App
+# Nautobot Cellular SoT App
 
 [![Nautobot](https://img.shields.io/badge/Nautobot-3.1%2B-blue)](https://www.networktocode.com/nautobot/)
 [![Python](https://img.shields.io/badge/Python-3.10--3.14-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green)](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/LICENSE)
-[![Status](https://img.shields.io/badge/Status-Alpha-orange)](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/discussions)
+[![Status](https://img.shields.io/badge/Status-Production-brightgreen)](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/releases)
 
-Nautobot Wireless Cellular SoT App is an Alpha Nautobot app that turns cellular routers, SIM cards, carrier profiles, and normalized latest-state observations into one operator-owned Source of Truth. Nautobot owns desired state while external collectors own high-frequency polling and telemetry history.
+Nautobot Cellular SoT App is the production authoritative management layer for cellular routers, SIM cards, carrier profiles, and normalized latest-state observations. Nautobot owns desired state while external collectors own high-frequency polling and telemetry history.
 
 ## Repository Metadata
 
@@ -15,12 +15,7 @@ Nautobot Wireless Cellular SoT App is an Alpha Nautobot app that turns cellular 
 - Production branch: `main`
 - Development branches: `development`, `initial-dev`
 - License: Apache-2.0
-
-## Alpha Focus
-
-- Production target: Nautobot `>=3.1.0,<4.0.0` with Python `>=3.10,<3.15`, including Python 3.14 compatibility metadata.
-- Current rollout: model, UI, REST, GraphQL, summary, Prometheus, and SSoT scaffolding are in place for operator validation.
-- Feedback lanes: [Roadmap Discussion](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/discussions/2) and [Field Reports](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/discussions/3).
+- Development status: Production (`v1.0.0`)
 
 ## Features
 
@@ -28,12 +23,15 @@ Nautobot Wireless Cellular SoT App is an Alpha Nautobot app that turns cellular 
 - SIM assignment, slot uniqueness, lifecycle state, ICCID masking, and protected relationships.
 - Carrier and APN desired-state profiles.
 - Latest-only operational snapshots for registration and signal state.
-- Wireless Infrastructure dashboard, CRUD pages, filters, tables, and Device detail panel.
+- Cellular dashboard, CRUD pages, filters, tables, and Device detail panel.
 - REST API, GraphQL types, summary endpoint, and bounded-cardinality Prometheus export.
 - Pydantic normalization and DiffSync adapter scaffolding.
 - Transaction-safe SIM assignment and stale snapshot rejection.
 - Nautobot cookiecutter CI, security workflows, release automation, docs, issue templates, and Towncrier.
-- Standalone high-energy marketing page with UI sneak-peek screenshots from the documentation assets.
+- Standalone product page with UI previews from the documentation assets.
+- Database-backed runtime configuration, custom validation, home-page content,
+  contextual banners, Jinja filters, Jobs, core Device extensions, and native
+  app metrics.
 
 ## Installation
 
@@ -78,6 +76,10 @@ nautobot-server post_upgrade
 .\.venv\Scripts\poetry.exe run mkdocs build --strict
 ```
 
-The standalone marketing page is available at [`cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/cellular.html).
+The standalone product page is available at [`cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/cellular.html).
 
 The documentation copy is available at [`docs/cellular.html`](https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app/blob/main/docs/cellular.html) for static publishing workflows.
+
+Production v1 planning is complete. The v2 specification and planning review is
+due **October 1, 2026**, with v2 delivery targeted for **end of 2026**.
+

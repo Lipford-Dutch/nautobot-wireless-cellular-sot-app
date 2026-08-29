@@ -5,12 +5,12 @@ from nautobot.core.ui.choices import NavigationIconChoices, NavigationWeightChoi
 
 menu_items = (
     NavMenuTab(
-        name="Wireless Infrastructure",
+        name="Cellular",
         icon=NavigationIconChoices.WIRELESS,
         weight=NavigationWeightChoices.APPS + 20,
         groups=(
             NavMenuGroup(
-                name="Cellular",
+                name="Operations",
                 weight=100,
                 items=(
                     NavMenuItem(
@@ -45,6 +45,12 @@ menu_items = (
                         name="Carrier Profiles",
                         weight=300,
                         permissions=["nautobot_cellular_sot.view_carrierprofile"],
+                    ),
+                    NavMenuItem(
+                        link="plugins:nautobot_cellular_sot:cellularoperationalsnapshot_list",
+                        name="Operational Snapshots",
+                        weight=400,
+                        permissions=["nautobot_cellular_sot.view_cellularoperationalsnapshot"],
                     ),
                 ),
             ),

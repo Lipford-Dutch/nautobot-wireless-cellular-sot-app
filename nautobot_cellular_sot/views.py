@@ -7,7 +7,12 @@ from nautobot.core.ui import object_detail
 from nautobot.core.ui.choices import SectionChoices
 
 from nautobot_cellular_sot import filters, forms, models, tables
-from nautobot_cellular_sot.api.serializers import CarrierProfileSerializer, CellularRouterSerializer, SIMCardSerializer
+from nautobot_cellular_sot.api.serializers import (
+    CarrierProfileSerializer,
+    CellularOperationalSnapshotSerializer,
+    CellularRouterSerializer,
+    SIMCardSerializer,
+)
 from nautobot_cellular_sot.services import get_cellular_summary
 
 
@@ -113,6 +118,30 @@ class SIMCardUIViewSet(NautobotUIViewSet):
                 weight=200,
                 section=SectionChoices.RIGHT_HALF,
                 fields=("router", "slot", "provisioning_state", "activated_at", "suspended_at"),
+            ),
+        )
+    )
+
+
+class CellularOperationalSnapshotUIViewSet(NautobotUIViewSet):
+    """CRUD views for the latest normalized cellular operational state."""
+
+    queryset = models.CellularOperationalSnapshot.objects.select_related("router__device")
+    filterset_class = filters.CellularOperationalSnapshotFilterSet
+    form_class = forms.CellularOperationalSnapshotForm
+    table_class = tables.CellularOperationalSnapshotTable
+    serializer_class = CellularOperationalSnapshotSerializer
+    object_detail_content = object_detail.ObjectDetailContent(
+        panels=(
+            object_detail.ObjectFieldsPanel(
+                weight=100,
+                section=SectionChoices.LEFT_HALF,
+                fields=("router", "observed_at", "collector", "registration_state", "observed_iccid"),
+            ),
+            object_detail.ObjectFieldsPanel(
+                weight=200,
+                section=SectionChoices.RIGHT_HALF,
+                fields=("rssi_dbm", "rsrp_dbm", "rsrq_db", "sinr_db", "payload_hash"),
             ),
         )
     )

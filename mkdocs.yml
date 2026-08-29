@@ -2,7 +2,7 @@
 dev_addr: "127.0.0.1:8001"
 edit_uri: "edit/main/docs"
 site_dir: "nautobot_cellular_sot/static/nautobot_cellular_sot/docs"
-site_name: "Nautobot Wireless Cellular SoT App Documentation"
+site_name: "Nautobot Cellular SoT App Documentation"
 site_url: "https://docs.nautobot.com/projects/nautobot-cellular-sot/en/latest/"
 repo_url: "https://github.com/Lipford-Dutch/nautobot-wireless-cellular-sot-app"
 copyright: "Copyright &copy; The Authors"
@@ -113,11 +113,14 @@ nav:
   - Administrator Guide:
       - Install and Configure: "admin/install.md"
       - GitHub Environments: "admin/github_environments.md"
+      - Production Readiness: "admin/production_readiness.md"
+      - V2 Planning: "admin/v2_planning.md"
       - Upgrade: "admin/upgrade.md"
       - Uninstall: "admin/uninstall.md"
       - Compatibility Matrix: "admin/compatibility_matrix.md"
       - Release Notes:
           - "admin/release_notes/index.md"
+          - v1.0: "admin/release_notes/version_1.0.md"
           - v0.1: "admin/release_notes/version_0.1.md"
   - Developer Guide:
       - Extending the App: "dev/extending.md"

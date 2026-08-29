@@ -3,7 +3,7 @@
 import django_tables2 as tables
 from nautobot.apps.tables import BaseTable, ButtonsColumn
 
-from nautobot_cellular_sot.models import CarrierProfile, CellularRouter, SIMCard
+from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 
 
 class CarrierProfileTable(BaseTable):
@@ -40,3 +40,23 @@ class SIMCardTable(BaseTable):
     class Meta(BaseTable.Meta):
         model = SIMCard
         fields = ("masked_iccid", "carrier_profile", "router", "slot", "provisioning_state")
+
+
+class CellularOperationalSnapshotTable(BaseTable):
+    """Latest cellular operational state by router."""
+
+    router = tables.Column(linkify=True)
+    actions = ButtonsColumn(CellularOperationalSnapshot)
+
+    class Meta(BaseTable.Meta):
+        model = CellularOperationalSnapshot
+        fields = (
+            "router",
+            "observed_at",
+            "collector",
+            "registration_state",
+            "rssi_dbm",
+            "rsrp_dbm",
+            "rsrq_db",
+            "sinr_db",
+        )
