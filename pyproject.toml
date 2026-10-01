@@ -58,13 +58,13 @@ ipython = "*"
 pylint = "*"
 pylint-django = ">=2.5.4"
 pylint-nautobot = ">=0.3.1"
-ruff = "0.15.16"
+ruff = "0.16.9"
 yamllint = "*"
 toml = "*"
 # Python implementation of markdownlint
 pymarkdownlnt = "~0.9.30"
 Markdown = "*"
-towncrier = ">=23.6.0,<=25.8.0"
+towncrier = ">=23.6.0,<=26.9.0"
 to-json-schema = "*"
 jsonschema = "*"
 djlint = ">=1.36.4,<2.0.0"
@@ -77,12 +77,12 @@ markdown-version-annotations = "1.0.1"
 # Rendering docs to HTML
 mkdocs = "1.6.1"
 # Material for MkDocs theme
-mkdocs-material = "9.7.6"
+mkdocs-material = "9.7.7"
 # Automatic documentation from sources, for MkDocs
-mkdocstrings = "0.27.0"
-mkdocstrings-python = "1.13.0"
+mkdocstrings = "1.0.6"
+mkdocstrings-python = "2.0.9"
 mkdocs-autorefs = "1.4.4"
-griffe = "2.0.2"
+griffe = "2.3.0"
 # Image lightboxing in mkdocs
 mkdocs-glightbox = "~0.5.2"
 
