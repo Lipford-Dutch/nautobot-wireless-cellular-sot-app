@@ -1,6 +1,6 @@
 """GraphQL types for Nautobot Cellular SoT."""
 
-from nautobot.core.graphql.types import OptimizedNautobotObjectType
+from nautobot.apps.graphql import OptimizedNautobotObjectType
 
 from nautobot_cellular_sot.models import CarrierProfile, CellularOperationalSnapshot, CellularRouter, SIMCard
 

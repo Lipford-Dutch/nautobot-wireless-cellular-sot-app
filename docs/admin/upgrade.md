@@ -1,6 +1,6 @@
 # Upgrading the App
 
-Use this guide when upgrading Nautobot Wireless Cellular SoT App in an existing Nautobot environment.
+Use this guide when upgrading Nautobot Cellular SoT App in an existing Nautobot environment.
 
 ## Upgrade Guide
 
@@ -21,4 +21,7 @@ Use this guide when upgrading Nautobot Wireless Cellular SoT App in an existing 
 5. Restart Nautobot services, workers, and schedulers.
 6. Confirm the app loads under Installed Apps and that `/plugins/cellular-sot/` renders.
 
-The `v0.1.0` release is the first published release and has no prior app version migration requirements.
+The `v1.0.0` release has no new Django schema migration. Upgrading from
+`v0.1.0` registers the production UI integrations, Operational Snapshot views,
+Jobs, runtime configuration, validators, Device extensions, and app metrics
+during `post_upgrade` and service restart.

@@ -11,6 +11,7 @@ router = NautobotUIViewSetRouter()
 router.register("carrier-profiles", views.CarrierProfileUIViewSet)
 router.register("cellular-routers", views.CellularRouterUIViewSet)
 router.register("sim-cards", views.SIMCardUIViewSet)
+router.register("operational-snapshots", views.CellularOperationalSnapshotUIViewSet)
 
 app_name = "nautobot_cellular_sot"
 urlpatterns = [

@@ -741,7 +741,7 @@ def help_task(context):
 
 @task(
     help={
-        "version": "Version of Nautobot Wireless Cellular SoT App to generate the release notes for.",
+        "version": "Version of Nautobot Cellular SoT App to generate the release notes for.",
         "date": "Date of the release (default: today).",
         "keep": "Keep existing release notes files. Useful for testing. (default: False).",
     }

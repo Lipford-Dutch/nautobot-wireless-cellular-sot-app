@@ -49,7 +49,7 @@ The branching policy includes the following tenets:
 - PRs intended to add new features should be sourced from the `develop` branch.
 - PRs intended to fix issues in the Nautobot LTM compatible release should be sourced from the latest `ltm-<major.minor>` branch instead of `develop`.
 
-Nautobot Wireless Cellular SoT App will observe semantic versioning, as of 1.0. This may result in a quick turnaround in minor versions to keep pace with an ever-growing feature set.
+Nautobot Cellular SoT App observes semantic versioning as of Production v1.0.
 
 ## Testing Standards
 
@@ -72,6 +72,8 @@ We will create a `release-X.Y` branch for you to open your PR against and cut a 
 
 ## Release Policy
 
-Nautobot Wireless Cellular SoT App has currently no intended scheduled release schedule, and will release new features in minor versions.
+The v2 specification and planning package is due October 1, 2026, with v2
+delivery targeted for end of 2026. Later releases will follow the approved v2
+release plan.
 
 The steps taken by maintainers when creating a new release are documented in the [release checklist](./release_checklist.md).

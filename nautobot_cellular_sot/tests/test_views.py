@@ -38,6 +38,15 @@ class CellularDashboardViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 403)
 
+    def test_operational_snapshot_model_has_ui_list(self):
+        """The operational snapshot model is visible through a UI list route."""
+        self.client.force_login(self.user)
+
+        response = self.client.get(reverse("plugins:nautobot_cellular_sot:cellularoperationalsnapshot_list"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Cellular Operational Snapshots")
+
 
 class CellularSummaryAPITestCase(TestCase):
     """Tests for the cellular summary and observability APIs."""
